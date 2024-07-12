@@ -1,0 +1,165 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    color: white;
+}
+
+.userCard {
+    background-color: #252148;
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    height: 330px;
+}
+
+.userCard .pfp {
+    width: 250;
+    height: 250px;
+    border-radius: 15px;
+    margin-right: 30px;
+}
+
+.userInfo .username {
+    font-size: 55px;
+    color: white;
+}
+
+.playerSince,
+.recentActivity {
+    font-size: 18px;
+}
+
+.countryName {
+    font-size: 16px;
+}
+
+.rank {
+    margin-left: auto;
+    margin-top: auto;
+    font-size: 48px;
+}
+
+.statField {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.statField .value {
+    margin-left: auto;
+}
+
+.statCard {
+    background-color: #252148;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 290px;
+    height: min-content;
+}
+
+.loading {
+    font-size: 64px;
+}
+
+.topCard {
+    background-color: #252148;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 850px;
+}
+
+.rowContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.topText {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.flagAndStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.flagAndStatus .countryFlag {
+    width: 32px;
+    max-width: 100%;
+    margin-right: 6px;
+}
+
+.recentActivity {
+    margin-bottom: 10px;
+}
+
+.playerSince {
+    margin-bottom: 2px;
+}
+
+.mapTitle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 450px;
+    font-size: 15px;
+}
+
+.ppAcc {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-evenly;
+}
+
+.ppAcc .pp {
+    font-size: 20px;
+}
+
+.mapBg {
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+    filter: brightness(0.5);
+}
+
+.imgContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.topField {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    height: 73px;
+    background-color: #332E61;
+    padding: 2px 20px 2px 0;
+}
+
+.stats,
+.date {
+    font-size: 15px;
+}

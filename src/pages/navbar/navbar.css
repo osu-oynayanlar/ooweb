@@ -1,0 +1,38 @@
+.navbar {
+    background-color: #252148;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    padding: 0 50px 0 50px;
+}
+
+.leaderboardAnchor {
+    text-decoration: none;
+    color: white;
+    height: 60%;
+    background-color: #373457;
+    margin-right: 15px;
+    border-radius: 10px;
+    place-content: center;
+    padding: 0 12px 0 12px;
+}
+
+.serverName {
+    color: white;
+    margin-right: auto;
+    font-size: 40px;
+}
+
+#searchPlayer {
+    background-color: #373457;
+    border: none;
+    color: white;
+    height: 60%;
+    border-radius: 10px;
+    padding-left: 12px;
+}
+
+#searchPlayer::placeholder {
+    font-style: italic;
+}
