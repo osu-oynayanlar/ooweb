@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useFetch from "../../customHooks/useFetch";
+// import useFetch from "../../customHooks/useFetch";
 import UserCard from "./userCard";
 import "./userPage.css";
 import StatCard from "./statCard";

@@ -26,12 +26,11 @@ const UserCard = ({ userId }) => {
     }
 
     let userRank;
-    let index;
 
     if (data[1]) {
         const leaderboard = data[1].leaderboard;
-        index = leaderboard.findIndex((obj) => obj.player_id === Number(userId));
-        index++;
+        userRank = leaderboard.findIndex((obj) => obj.player_id === Number(userId));
+        userRank++;
     }
 
     return (
@@ -63,7 +62,7 @@ const UserCard = ({ userId }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="rank">#{numFormat.format(index)}</div>
+                        <div className="rank">#{numFormat.format(userRank)}</div>
                     </>
                 ) : (
                     <div className="notFound">User not found.</div>

@@ -30,7 +30,6 @@ const TopCard = ({ userId }) => {
                     <div className="notFound">User not found.</div>
                 )
             ) : null}
-            {/* <TopField /> */}
         </div>
     );
 };
@@ -56,6 +55,7 @@ const TopField = ({ play }) => {
     return (
         <div className="topField">
             <div className="imgContainer">
+                <div className="grade">{grade}</div>
                 <img
                     src={`https://assets.ppy.sh/beatmaps/${map.set_id}/covers/list@2x.jpg`}
                     alt="map bg"
@@ -70,7 +70,7 @@ const TopField = ({ play }) => {
                     {mods !== 0 && (
                         <>
                             {" "}
-                            / <b>{getModString(mods)}</b>
+                            / <b>+{getModString(mods)}</b>
                         </>
                     )}
                 </div>

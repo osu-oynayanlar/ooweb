@@ -1,4 +1,4 @@
-import "./navbar.css";
+import SearchInput from "./searchInput";
 
 const Navbar = () => {
     return (
@@ -7,7 +7,7 @@ const Navbar = () => {
             <a href="#" className="leaderboardAnchor">
                 Leaderboard
             </a>
-            <input type="text" name="searchPlayer" id="searchPlayer" placeholder="Search a player..." />
+            <SearchInput />
         </div>
     );
 };
