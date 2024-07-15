@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import useFetch from "../../customHooks/useFetch";
 import "./userPage.css";
-import { getModString } from "../../constants/mods";
+import { getModString } from "../../utils/mods";
 import { Link } from "react-router-dom";
 
 const numFormat = new Intl.NumberFormat("en-US");

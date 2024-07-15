@@ -50,8 +50,6 @@ const ServerStats = () => {
                     const passesGradeCheck = score.grade !== "F";
                     const passesModeCheck = score.mode === 0;
 
-                    console.log(`Grade Check: ${passesGradeCheck}, Mode Check: ${passesModeCheck}, Score:`, score);
-
                     return passesGradeCheck && passesModeCheck;
                 });
                 if (filteredScores.length > 0) {
