@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import useFetch from "../../customHooks/useFetch";
-const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" });
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
+import getCountryName from "../../utils/countryCode";
 const numFormat = new Intl.NumberFormat("en-US");
+dayjs.extend(relativeTime);
 
 const countryCodeToFlagURL = (countryCode) => {
     const base = 0x1f1e6;
@@ -40,29 +43,41 @@ const UserCard = ({ userId }) => {
             {userInfo ? (
                 userInfo.status === "success" ? (
                     <>
-                        <img
-                            src={`https://a.bancho.osuoynayanlar.com.tr/${userInfo.player.info.id}`}
-                            alt="Profile picture of the user"
-                            className="pfp"
-                        />
-                        <div className="userInfo">
-                            <div className="username">{userInfo.player.info.name}</div>
-                            <div className="playerSince">
-                                Player since:
-                                <b> {new Date(Number(userInfo.player.info.creation_time) * 1000).toLocaleString()}</b>
-                            </div>
-                            <div className="recentActivity">
-                                Latest activity:
-                                <b> {new Date(Number(userInfo.player.info.latest_activity) * 1000).toLocaleString()}</b>
-                            </div>
-                            <div className="flagAndStatus">
-                                <img src={countryCodeToFlagURL(userInfo.player.info.country)} className="countryFlag" />
-                                <div className="countryName">
-                                    {regionNamesInEnglish.of(userInfo.player.info.country)}
+                        <div className="userDataContainer">
+                            <img
+                                src={`https://a.bancho.osuoynayanlar.com.tr/${userInfo.player.info.id}`}
+                                alt="Profile picture of the user"
+                                className="pfp"
+                            />
+                            <div className="killMeContainer">
+                                <div className="userInfo">
+                                    <div className="username">{userInfo.player.info.name}</div>
+                                    <div className="playerSince">
+                                        Player since:
+                                        <b> {dayjs.unix(userInfo.player.info.creation_time).fromNow()}</b>
+                                    </div>
+                                    <div className="recentActivity">
+                                        Latest activity:
+                                        <b> {dayjs.unix(userInfo.player.info.latest_activity).fromNow()}</b>
+                                    </div>
+                                </div>
+
+                                <div className="userCardRow">
+                                    <div className="flagAndStatus">
+                                        <img
+                                            src={countryCodeToFlagURL(userInfo.player.info.country)}
+                                            className="countryFlag"
+                                        />
+                                        <div className="countryName">
+                                            {getCountryName(String(userInfo.player.info.country).toUpperCase())}
+                                        </div>
+                                    </div>
+                                    <div className="rankContainer">
+                                        <div className="rank">#{numFormat.format(userRank)}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="rank">#{numFormat.format(userRank)}</div>
                     </>
                 ) : (
                     <div className="notFound">User not found.</div>

@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 const SearchInput = () => {
     const [query, setQuery] = useState("");
     const [allSuggestions, setAllSuggestions] = useState([]);
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [isFocused, setIsFocused] = useState(false);
+    const [isInputFocused, setIsInputFocused] = useState(false);
+    const [isFadingOut, setIsFadingOut] = useState(false);
 
     const inputRef = useRef(null);
-    const suggestionsRef = useRef(null);
 
     useEffect(() => {
-        // Fetch data once when the component mounts
         fetch(`https://api.bancho.osuoynayanlar.com.tr/v1/search_players`)
             .then((response) => response.json())
             .then((data) => {
@@ -26,29 +26,27 @@ const SearchInput = () => {
     }, []);
 
     useEffect(() => {
-        // Filter suggestions based on the input query
-        if (query.length > 0) {
-            const filtered = allSuggestions.filter((suggestion) =>
-                suggestion.name.toLowerCase().includes(query.toLowerCase())
-            );
-            setFilteredSuggestions(filtered);
-        } else {
-            setFilteredSuggestions([]);
-        }
+        const timeoutId = setTimeout(() => {
+            if (query.length > 0) {
+                const filtered = allSuggestions.filter((suggestion) =>
+                    suggestion.name.toLowerCase().includes(query.toLowerCase())
+                );
+                setFilteredSuggestions(filtered);
+                setIsFadingOut(false);
+            } else {
+                setFilteredSuggestions([]);
+            }
+        }, 500);
+        return () => clearTimeout(timeoutId);
     }, [query, allSuggestions]);
 
-    const handleFocus = () => {
-        setIsFocused(true);
-    };
-
-    const handleBlur = (e) => {
-        if (
-            suggestionsRef.current &&
-            !suggestionsRef.current.contains(e.relatedTarget) &&
-            e.relatedTarget !== inputRef.current
-        ) {
-            setIsFocused(false);
-        }
+    const handleBlur = () => {
+        setIsFadingOut(true);
+        setTimeout(() => {
+            setIsInputFocused(false);
+            setFilteredSuggestions([]);
+            setIsFadingOut(false);
+        }, 250);
     };
 
     return (
@@ -58,16 +56,16 @@ const SearchInput = () => {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                placeholder="Search a player..."
+                placeholder="Search for a player..."
                 id="searchPlayer"
                 ref={inputRef}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={handleBlur}
             />
-            {isFocused && filteredSuggestions.length > 0 && (
-                <ul className="suggestions" ref={suggestionsRef}>
+            {filteredSuggestions.length > 0 && (isInputFocused || isFadingOut) && (
+                <ul className={`suggestions ${isFadingOut ? "fade-out" : isInputFocused ? "fade-in" : ""}`}>
                     {filteredSuggestions.map((suggestion, index) => (
-                        <a href={`/u/${suggestion.id}`} className="userLink" key={index}>
+                        <Link to={`/u/${suggestion.id}`} className="userLink" key={index}>
                             <li>
                                 <img
                                     src={`https://a.bancho.osuoynayanlar.com.tr/${suggestion.id}`}
@@ -76,7 +74,7 @@ const SearchInput = () => {
                                 />
                                 {suggestion.name}
                             </li>
-                        </a>
+                        </Link>
                     ))}
                 </ul>
             )}

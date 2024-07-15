@@ -2,6 +2,16 @@ import PropTypes from "prop-types";
 import useFetch from "../../customHooks/useFetch";
 // const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" });
 
+const formatSeconds = (seconds) => {
+    const days = Math.floor(seconds / 86400);
+    seconds %= 86400; // Remaining seconds after calculating days
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600; // Remaining seconds after calculating hours
+    const minutes = Math.floor(seconds / 60);
+
+    return `${days}d ${hours}h ${minutes}m`;
+};
+
 const StatCard = ({ userId }) => {
     const numFormat = new Intl.NumberFormat("en-US");
     const { data, isPending, error } = useFetch([
@@ -18,7 +28,7 @@ const StatCard = ({ userId }) => {
                     <StatField title="Ranked score" value={numFormat.format(data[0].player.stats["0"].rscore)} />
                     <StatField title="Total score" value={numFormat.format(data[0].player.stats["0"].tscore)} />
                     <StatField title="Playcount" value={numFormat.format(data[0].player.stats["0"].plays)} />
-                    <StatField title="Playtime" value={numFormat.format(data[0].player.stats["0"].playtime)} />
+                    <StatField title="Playtime" value={formatSeconds(data[0].player.stats["0"].playtime)} />
                     <StatField title="Accuracy" value={`${Number(data[0].player.stats["0"].acc).toFixed(2)}%`} />
                     <StatField title="Total hits" value={numFormat.format(data[0].player.stats["0"].total_hits)} />
                     <StatField title="Max combo" value={numFormat.format(data[0].player.stats["0"].max_combo)} />

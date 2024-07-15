@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import useFetch from "../../customHooks/useFetch";
 import "./userPage.css";
 import { getModString } from "../../constants/mods";
+import { Link } from "react-router-dom";
 
 const numFormat = new Intl.NumberFormat("en-US");
 
@@ -36,7 +37,7 @@ const TopCard = ({ userId }) => {
 
 const TopField = ({ play }) => {
     const score = numFormat.format(play.score);
-    const pp = Math.trunc(Number(play.pp));
+    const pp = Math.round(Number(play.pp));
     const acc = Number(play.acc).toFixed(2) + "%";
     const mods = play.mods;
     const maxCombo = play.max_combo;
@@ -49,13 +50,13 @@ const TopField = ({ play }) => {
         minute: "numeric",
         hour12: true,
     };
-    const playTime = new Date(play.play_time).toLocaleString("en-US", options);
+    const playTime = new Date(play.play_time).toLocaleString(options);
     const map = play.beatmap;
 
     return (
         <div className="topField">
             <div className="imgContainer">
-                <div className="grade">{grade}</div>
+                <b className="grade">{grade}</b>
                 <img
                     src={`https://assets.ppy.sh/beatmaps/${map.set_id}/covers/list@2x.jpg`}
                     alt="map bg"
@@ -64,7 +65,9 @@ const TopField = ({ play }) => {
             </div>
 
             <div className="mapInfo">
-                <div className="mapTitle">{`${map.artist} - ${map.title} [${map.version}] (${map.creator})`}</div>
+                <Link to={`https://osu.ppy.sh/beatmaps/${map.id}`} target="_blank" className="mapTitle">
+                    <div>{`${map.artist} - ${map.title} [${map.version}] (${map.creator})`}</div>
+                </Link>
                 <div className="stats">
                     {`${score} / ${maxCombo}x`}
                     {mods !== 0 && (

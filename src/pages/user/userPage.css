@@ -25,6 +25,10 @@
     margin-right: 30px;
 }
 
+.userInfo {
+    height: fit-content;
+}
+
 .userInfo .username {
     font-size: 55px;
     color: white;
@@ -40,9 +44,19 @@
 }
 
 .rank {
-    margin-left: auto;
-    margin-top: auto;
     font-size: 48px;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: end; */
+    /* margin-left: auto; */
+}
+
+.rankContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-left: auto;
+    height: 100%;
 }
 
 .statField {
@@ -115,12 +129,31 @@
 }
 
 .mapTitle {
+    text-decoration: none;
+    color: white;
+}
+
+.mapTitle div {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 450px;
+    /* max-width: 70%; */
     font-size: 15px;
 }
+
+.mapInfo {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* max-width: fit-content; */
+    max-width: 50%;
+}
+
+.mapTitle:hover {
+    text-decoration: underline;
+}
+
 
 .ppAcc {
     margin-left: auto;
@@ -128,17 +161,25 @@
     flex-direction: column;
     align-items: end;
     justify-content: space-evenly;
+    flex-shrink: 0;
 }
 
 .ppAcc .pp {
     font-size: 20px;
 }
 
+.ppAcc .acc {
+    white-space: nowrap;
+}
+
 .mapBg {
     border-radius: 10px;
-    width: 120px;
+    /* width: 120px; */
     height: 120px;
     filter: brightness(0.5);
+    flex-shrink: 0;
+    /* width: auto; */
+    min-width: 120px;
 }
 
 .imgContainer {
@@ -172,5 +213,68 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     font-size: 40px;
-    opacity: 0.7;
+    opacity: 0.6;
+}
+
+.userDataContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.killMeContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.userCardRow {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1180px) {
+    .container {
+        width: 80%;
+    }
+
+    .rowContainer {
+        flex-direction: column;
+    }
+
+    .statCard {
+        width: 100%;
+    }
+
+    .topCard {
+        width: 100%;
+    }
+
+    .stats {
+        width: fit-content;
+    }
+
+    .date {
+        width: fit-content;
+    }
+
+    @media (max-width: 890px) {
+        .userDataContainer {
+            flex-direction: column;
+        }
+
+        .userCard {
+            height: fit-content;
+        }
+
+        .pfp {
+            width: 200px;
+            max-height: 200px;
+            margin: 0;
+        }
+
+    }
 }

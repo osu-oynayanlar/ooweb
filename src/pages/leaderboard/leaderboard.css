@@ -1,0 +1,188 @@
+.leaderboardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 100px;
+
+    width: 1500px;
+    /* width: 1300px */
+}
+
+.numeroUno {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #34718B;
+    border-radius: 16px;
+
+    padding: 36px 50px;
+    /* padding: 25px 50px; */
+}
+
+.unoRank {
+    font-size: 68px;
+    margin-right: 50px;
+}
+
+.unoAvatar img {
+    border-radius: 48px;
+
+    width: 300px;
+    /* width: 200px; */
+}
+
+.unoInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 45px;
+}
+
+.unoNick {
+    font-size: 48px;
+}
+
+.unoStats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.peppypoints {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.accuracy {
+    margin-right: 16px;
+}
+
+.accAndPlaycount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.players {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #2D2B3F;
+    border-radius: 16px;
+    padding: 12px 30px;
+}
+
+.playerRank {
+    font-size: 24px;
+    width: 70px;
+}
+
+.playerAvatar img {
+    border-radius: 24px;
+    width: 70px;
+    height: 70px;
+    margin-right: 24px;
+}
+
+.playerName {
+    font-size: 24px;
+}
+
+.playerSec1,
+.playerSec2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.playerSec2 {
+    font-size: 22px;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.playerSec2 * {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+}
+
+.infoRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 30px;
+    font-size: 20px;
+}
+
+.sectionOne,
+.sectionTwo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sectionTwo {
+    width: 400px;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.sectionTwo * {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.infoUsername {
+    margin-left: 94px;
+}
+
+.infoRank {
+    width: 70px;
+}
+
+@media (max-width: 1550px) {
+    .leaderboardContainer {
+        width: 95%;
+    }
+}
+
+.unoNick a {
+    color: white;
+    text-decoration: none;
+}
+
+.unoNick a:hover {
+    text-decoration: underline;
+}
+
+.playerName a {
+    color: white;
+    text-decoration: none;
+}
+
+.playerName a:hover {
+    text-decoration: underline;
+}
